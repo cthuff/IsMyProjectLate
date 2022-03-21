@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="apple-mobile-web-app-title" content="Is My Project Late?">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- <link rel="apple-touch-icon" href="/myicon.icns"> -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="Cache-control" content="public"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline' 'self'; style-src 'unsafe-inline' 'self' ">
+    <meta name="viewport" content="device-width, initial-scale=1.0 maximum-scale=2.0">
+    <head>
+    <title>Is My Project Late?</title>
+        <link href="screenMode.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    </head>
+<body>
+<form id="form">
+    <div style="text-align: center;">
+            <label for="startTime">Project End Date</label>
+            <input type="date" value="2022-03-21" id="threeWeeksOut" style="font-size: medium;" required>
+        <p>
+        Three weeks would be: <span id="dateSpan" style="color: #C45AEC;">MM/DD/YYYY</span>
+        </p>
+        <div>
+            <button style="font-size: 15px;" id="canIGoHome" onclick="isItLate()">Is My Project Late?</button>
+        </div>
+    </div>
+  </form>
+</body>
+<footer>
+    <div style="text-align: center;">
+        <p style="font-size: small;">Made by <a id = "webpage" style="color: #82EC5A;" href="https://craighuff.com" target="_blank"> Craig Huff</a></p>
+        <!-- <p style="font-size: small;"> <a id = "file" style="color: #82EC5A;" href="https://github.com/cthuff/WhenCanIGoHome/releases" target="_blank">Download </a></p> -->
+        <br>
+        <div>
+            <button id="darkMode" onclick="toggle()">LightMode</button>
+        </div>
+        
+    </div>
+</footer>
+<script src="impl.js"></script>
+</html>
