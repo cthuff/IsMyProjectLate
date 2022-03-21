@@ -45,40 +45,40 @@ threeWeeksOut.addEventListener("input", function() { logic(); }, false);
 
 
 var endDate;
-
+var today;
 function logic(){
-    let today = new Date(threeWeeksOut.valueAsNumber);
-    date = new Date().setDate(today.getDate() + 22);
-    let endDate = new Date(date)
-    var month 
-    var year = endDate.getFullYear()
-    if (endDate.getDate() > today.getDate()){
-        month =  endDate.getMonth() + 1
+    
+    today = new Date(threeWeeksOut.valueAsNumber + 86400000);
+    date = new Date().setDate(today.getDate() - 21);
+    endDate = new Date(date)
+    if(endDate.getDate() < today.getDate()) {
+        endDate.setMonth(today.getMonth())
     } else {
-        if (month == 12) {
-            year += 1
-        }
-        month = (endDate.getMonth() + 1) % 12
-    } 
-
-    dateSpan.innerText = month + "/" + endDate.getDate() + "/" + year
-    console.log(endDate);
-    //gets the current time to compare to the total shift time
+        endDate.setMonth(today.getMonth() -1 )
+    }
+    dateSpan.innerText = endDate.toDateString();
 }
 
-function dateString(date){
-    date.getYear()
+function threeWeeksAgo(date){
+
 
 }
 
 //Calculates if the client can go home based on the current time and their clockout time 
 function isItLate() {
-    let date = new Date();
-    let now = (date.getHours() * 3600) + (date.getMinutes() * 60);
-    if((totalSeconds - now) < 60) {
-        alert("Get the fuck out of here!");
+    tempToday = new Date();
+    tempdate = new Date().setDate(tempToday.getDate() + 21);
+    tempEndDate = new Date(tempdate)
+    if(tempEndDate.getDate() < tempToday.getDate()) {
+        tempEndDate.setMonth(tempToday.getMonth() + 1)
     } else {
-        alert("Sorry, you're stuck here");
+        tempEndDate.setMonth(tempToday.getMonth() )
+    }
+
+    if(tempEndDate > endDate) {
+        alert("You should have asked sooner");
+    } else {
+        alert("Woo! You're more than 3 weeks out!");
     }
 }
 
