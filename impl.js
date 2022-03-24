@@ -42,39 +42,32 @@ function lightMode() {
 var threeWeeksOut = document.getElementById("threeWeeksOut");
 var dateSpan = document.getElementById("dateSpan");
 threeWeeksOut.addEventListener("input", function() { logic(); }, false);
-
-
 var endDate;
-var today;
+
+
+
 function logic(){
-    
-    today = new Date(threeWeeksOut.valueAsNumber + 86400000);
-    date = new Date().setDate(today.getDate() - 21);
-    endDate = new Date(date)
-    if(endDate.getDate() < today.getDate()) {
-        endDate.setMonth(today.getMonth())
-    } else {
-        endDate.setMonth(today.getMonth() -1 )
+    if(threeWeeksOut.value === "") {
+        endDate = new Date()
     }
-    dateSpan.innerText = endDate.toDateString();
-}
+    else {
+        endDate = new Date(threeWeeksOut.valueAsNumber + 86400000);   
+    }
+    endDate.setDate(endDate.getDate() - 21);
 
-function threeWeeksAgo(date){
+    let dd = endDate.getDate();
+    let mm = endDate.getMonth() + 1; // 0 is January, so we must add 1
+    let yyyy = endDate.getFullYear();
 
-
+    var dateString = mm + "/" + dd + "/" + yyyy;
+    dateSpan.innerText = dateString;
 }
 
 //Calculates if the client can go home based on the current time and their clockout time 
 function isItLate() {
-    tempToday = new Date();
-    tempdate = new Date().setDate(tempToday.getDate() + 21);
-    tempEndDate = new Date(tempdate)
-    if(tempEndDate.getDate() < tempToday.getDate()) {
-        tempEndDate.setMonth(tempToday.getMonth() + 1)
-    } else {
-        tempEndDate.setMonth(tempToday.getMonth() )
-    }
-
+    tempEndDate = new Date();
+    console.log(tempEndDate)
+    console.log(endDate)
     if(tempEndDate > endDate) {
         alert("You should have asked sooner");
     } else {
